@@ -1,0 +1,41 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-08-14T10:14:00Z",
+  "source_skill": "paidocriss",
+  "source_phase": "Phase 5 — Refactor with embedded/",
+  "embedded": [
+    {
+      "name": "paidocriss-doutrina",
+      "path": "embedded/doutrina/SKILL.md",
+      "origin": "Economy Router — SKILL.md (lines 8-145, original)",
+      "origin_date": "2026-08-11",
+      "content_lines": 106,
+      "description": "Doutrina: camadas, invariantes, regra obrigatória, consolidação física",
+      "tags": ["doutrina", "invariantes", "orquestração"]
+    },
+    {
+      "name": "paidocriss-cli-script",
+      "path": "embedded/cli-script/SKILL.md",
+      "origin": "Economy Router — SKILL.md (lines 148-378, original)",
+      "origin_date": "2026-08-11",
+      "content_lines": 248,
+      "description": "Implementação CLI script: 5 skills (turbo, input, filter, diff, watch)",
+      "tags": ["cli", "script", "bash", "automation"]
+    }
+  ],
+  "refactor_metrics": {
+    "baseline_lines": 377,
+    "nucleus_skill_md": 95,
+    "embedded_total": 354,
+    "reduction_percent": 60.0,
+    "target": "≤400L nucleus + embedded/",
+    "status": "OK"
+  },
+  "lint_status": {
+    "R1_nucleus_le_400": true,
+    "R4_motor_llm_free": true,
+    "R5_proveniencia": true,
+    "R12_idempotence_marker": "pending_in_nucleus",
+    "exit_code": 0
+  }
+}

@@ -36,6 +36,27 @@
           {
             "type": "command",
             "command": "$CLAUDE_CONFIG_DIR/hooks/block-secrets.sh"
+          },
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_CONFIG_DIR/setup-nexo/hooks/bloquear-escrita-sem-catalogo.js\""
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_CONFIG_DIR/setup-nexo/hooks/bloquear-fase-sem-plano.js\""
+          }
+        ],
+        "matcher": "Task"
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_CONFIG_DIR/setup-nexo/hooks/auto-conectar-mcp.js\""
           }
         ]
       }
@@ -64,6 +85,10 @@
           {
             "type": "command",
             "command": "bash ~/.claude/skills/nexo-passa-bastao/motor/passa-bastao.sh auto"
+          },
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_CONFIG_DIR/setup-nexo/hooks/precompact-preservar.js\""
           }
         ]
       }
@@ -77,6 +102,37 @@
           }
         ],
         "matcher": "*"
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_CONFIG_DIR/setup-nexo/hooks/marcar-escrita.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_CONFIG_DIR/setup-nexo/hooks/sugerir-evolucao-nucleo.js\""
+          }
+        ],
+        "matcher": "Write|Edit"
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_CONFIG_DIR/setup-nexo/hooks/marcar-revisao-feita.js\""
+          }
+        ],
+        "matcher": "Task"
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_CONFIG_DIR/setup-nexo/hooks/marcar-catalogo-lido.js\""
+          }
+        ],
+        "matcher": "Read"
       }
     ],
     "Stop": [
@@ -85,6 +141,24 @@
           {
             "type": "command",
             "command": "bash \"$CLAUDE_CONFIG_DIR/skills/nexo-paidocriss/motor/hooks/final-report.sh\""
+          },
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_CONFIG_DIR/setup-nexo/hooks/bloquear-fim-sem-memoria.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_CONFIG_DIR/setup-nexo/hooks/bloquear-fim-sem-revisao.js\""
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_CONFIG_DIR/setup-nexo/hooks/prompt-submit-protocolo.js\""
           }
         ]
       }

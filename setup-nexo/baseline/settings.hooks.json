@@ -1,17 +1,23 @@
 {
-  "_descricao": "Wiring de hooks do Setup Nexo para ambientes com hooks nativos (formato Claude Code, compatível com a maioria dos CLIs generico-json). O instalador mescla isto no settings.json do ambiente detectado sem apagar hooks pré-existentes de terceiros.",
+  "_descricao": "Wiring de hooks do Setup Nexo para ambientes com hooks nativos (formato Claude Code, compat\u00c3\u00advel com a maioria dos CLIs generico-json). O instalador mescla isto no settings.json do ambiente detectado sem apagar hooks pr\u00c3\u00a9-existentes de terceiros.",
   "hooks": {
     "SessionStart": [
       {
         "hooks": [
-          { "type": "command", "command": "node \"${NEXO_HOME}/hooks/sessao-inicia.js\"" }
+          {
+            "type": "command",
+            "command": "node \"${NEXO_HOME}/hooks/sessao-inicia.js\""
+          }
         ]
       }
     ],
     "UserPromptSubmit": [
       {
         "hooks": [
-          { "type": "command", "command": "node \"${NEXO_HOME}/hooks/prompt-submit-protocolo.js\"" }
+          {
+            "type": "command",
+            "command": "node \"${NEXO_HOME}/hooks/prompt-submit-protocolo.js\""
+          }
         ]
       }
     ],
@@ -19,22 +25,49 @@
       {
         "matcher": "Bash",
         "hooks": [
-          { "type": "command", "command": "node \"${NEXO_HOME}/hooks/pre-commit-seguranca.js\"" },
-          { "type": "command", "command": "node \"${NEXO_HOME}/hooks/bloquear-comando-destrutivo.js\"" }
+          {
+            "type": "command",
+            "command": "node \"${NEXO_HOME}/hooks/pre-commit-seguranca.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"${NEXO_HOME}/hooks/bloquear-comando-destrutivo.js\""
+          }
         ]
       },
       {
         "matcher": "Write|Edit",
         "hooks": [
-          { "type": "command", "command": "node \"${NEXO_HOME}/hooks/bloquear-segredo-escrita.js\"" },
-          { "type": "command", "command": "node \"${NEXO_HOME}/hooks/bloquear-escrita-sem-catalogo.js\"" }
+          {
+            "type": "command",
+            "command": "node \"${NEXO_HOME}/hooks/bloquear-segredo-escrita.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"${NEXO_HOME}/hooks/bloquear-escrita-sem-catalogo.js\""
+          }
         ]
       },
       {
         "matcher": "Task",
         "hooks": [
-          { "type": "command", "command": "node \"${NEXO_HOME}/hooks/bloquear-fase-sem-plano.js\"" },
-          { "type": "command", "command": "node \"${NEXO_HOME}/hooks/avisar-economia-task.js\"" }
+          {
+            "type": "command",
+            "command": "node \"${NEXO_HOME}/hooks/bloquear-fase-sem-plano.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"${NEXO_HOME}/hooks/avisar-economia-task.js\""
+          }
+        ]
+      },
+      {
+        "matcher": null,
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${NEXO_HOME}/hooks/auto-conectar-mcp.js\""
+          }
         ]
       }
     ],
@@ -42,35 +75,56 @@
       {
         "matcher": "Write|Edit",
         "hooks": [
-          { "type": "command", "command": "node \"${NEXO_HOME}/hooks/marcar-escrita.js\"" },
-          { "type": "command", "command": "node \"${NEXO_HOME}/hooks/sugerir-evolucao-nucleo.js\"" }
+          {
+            "type": "command",
+            "command": "node \"${NEXO_HOME}/hooks/marcar-escrita.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"${NEXO_HOME}/hooks/sugerir-evolucao-nucleo.js\""
+          }
         ]
       },
       {
         "matcher": "Read",
         "hooks": [
-          { "type": "command", "command": "node \"${NEXO_HOME}/hooks/marcar-catalogo-lido.js\"" }
+          {
+            "type": "command",
+            "command": "node \"${NEXO_HOME}/hooks/marcar-catalogo-lido.js\""
+          }
         ]
       },
       {
         "matcher": "Task",
         "hooks": [
-          { "type": "command", "command": "node \"${NEXO_HOME}/hooks/marcar-revisao-feita.js\"" }
+          {
+            "type": "command",
+            "command": "node \"${NEXO_HOME}/hooks/marcar-revisao-feita.js\""
+          }
         ]
       }
     ],
     "PreCompact": [
       {
         "hooks": [
-          { "type": "command", "command": "node \"${NEXO_HOME}/hooks/precompact-preservar.js\"" }
+          {
+            "type": "command",
+            "command": "node \"${NEXO_HOME}/hooks/precompact-preservar.js\""
+          }
         ]
       }
     ],
     "Stop": [
       {
         "hooks": [
-          { "type": "command", "command": "node \"${NEXO_HOME}/hooks/bloquear-fim-sem-memoria.js\"" },
-          { "type": "command", "command": "node \"${NEXO_HOME}/hooks/bloquear-fim-sem-revisao.js\"" }
+          {
+            "type": "command",
+            "command": "node \"${NEXO_HOME}/hooks/bloquear-fim-sem-memoria.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"${NEXO_HOME}/hooks/bloquear-fim-sem-revisao.js\""
+          }
         ]
       }
     ]
