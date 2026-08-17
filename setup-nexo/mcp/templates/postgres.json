@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres", "${NEXO_POSTGRES_URL}"],
+      "_instrucao": "Defina NEXO_POSTGRES_URL no .env do projeto. Nunca cole a URL de conexão diretamente aqui."
+    }
+  }
+}

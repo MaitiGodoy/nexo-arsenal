@@ -1,0 +1,46 @@
+[
+  {
+    "test_id": "artemis_seo_agencies",
+    "briefing": {
+      "persona": "Dono de agência digital 28-45 anos, tem 3-8 clientes, frustrado com falta de garantias em SEO",
+      "problema": "Paga agências, elas prometem resultados, não entregam. Cliente fica no vácuo. Risco total do prospect.",
+      "solucao": "Artemis SEO — único sistema que assume o risco contratualmente. Você só paga se tiver resultado.",
+      "numeros": "1.7M impressões orgânicas em 30 dias. +2866% vs período anterior. Garantia contratual.",
+      "tom": "contrarian, humor irreverente, direto"
+    },
+    "expected_output": "4 variações de copy (colérico, melancólico, sanguíneo, fleumático)"
+  },
+  {
+    "test_id": "artemis_seo_technical",
+    "briefing": {
+      "persona": "CTO/Tech Lead em startup SaaS B2B, preocupado com SEO técnico, quer dados",
+      "problema": "SEO é visto como black box. Ninguém consegue explicar por que ranking não sobe. Sem transparência.",
+      "solucao": "Artemis SEO com IA — sistema de SEO técnico + IA que explica cada passo. Transparência total.",
+      "numeros": "Sistema é o único no Brasil com garantia contratual de trâfego orgânico.",
+      "tom": "data-driven, técnico, assertivo"
+    },
+    "expected_output": "4 variações de copy (colérico, melancólico, sanguíneo, fleumático)"
+  },
+  {
+    "test_id": "auraGo_academy",
+    "briefing": {
+      "persona": "Copywriter iniciante, 22-35 anos, quer aprender AI copywriting + no-code, pouco tempo",
+      "problema": "Cursos de copywriting tradicionais não ensinam IA. Quer ser rápido, produtivo, aprender as skills certas.",
+      "solucao": "AuraGo Academy — aprenda AI creative writing, N8N automations, no-code (Lovable) em 21 dias.",
+      "numeros": "Alunos reportam 3x mais produtividade. Construíram funnels em 48 horas.",
+      "tom": "humorous, aspirational, comunidade"
+    },
+    "expected_output": "4 variações de copy (colérico, melancólico, sanguíneo, fleumático)"
+  },
+  {
+    "test_id": "desafio_pago",
+    "briefing": {
+      "persona": "Empreendedor que quer construir produto digital, 28-50 anos, tem pressa, quer prova antes de pagar",
+      "problema": "Cursos caros, promessas genéricas, não sabe se vai funcionar. Quer garantia.",
+      "solucao": "Desafio Pago 21 dias — estrutura pronta para construir e vender seu primeiro digital product.",
+      "numeros": "21 dias. Paga apenas o que tiver faturado. Devolução total se não vender.",
+      "tom": "contrarian, data-driven, confiança"
+    },
+    "expected_output": "4 variações de copy (colérico, melancólico, sanguíneo, fleumático)"
+  }
+]

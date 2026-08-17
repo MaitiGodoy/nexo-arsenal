@@ -1,0 +1,13 @@
+* text=auto eol=lf
+*.sh   text eol=lf
+*.bash text eol=lf
+*.zsh  text eol=lf
+*.js   text eol=lf
+*.py   text eol=lf
+*.json text eol=lf
+*.md   text eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.mp3 binary
+*.tar.gz binary

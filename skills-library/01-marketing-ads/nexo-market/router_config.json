@@ -1,0 +1,117 @@
+{
+  "versao": "1.0.0",
+  "atualizado": "2026-08-15",
+  "fonte_skills": "~/.claude/skills-library/",
+  "rotas": {
+    "campaign": {
+      "descricao": "Criar/planejar campanha de mídia paga (Google, Meta, TikTok, LinkedIn, Apple, Microsoft).",
+      "skills": [
+        "/ads-plan",
+        "/ads-budget",
+        "/ads-create",
+        "/ads-creative",
+        "/ads-dna"
+      ],
+      "opcionais": [
+        "/ads-google",
+        "/ads-meta",
+        "/ads-tiktok",
+        "/ads-linkedin",
+        "/ads-apple",
+        "/ads-microsoft",
+        "/ads-youtube",
+        "/ads-landing"
+      ],
+      "categorias": ["01-marketing-ads"],
+      "aceite": "Plano de campanha com objetivo, verba por canal, criativos e critério de sucesso definido."
+    },
+    "audit-internal": {
+      "descricao": "Auditar conta/campanha própria: performance, desperdício, estrutura.",
+      "skills": [
+        "/ads-audit",
+        "/market-audit",
+        "/ads-budget"
+      ],
+      "opcionais": [
+        "/market-report",
+        "/analytics-tracking"
+      ],
+      "categorias": ["01-marketing-ads", "06-data-analytics"],
+      "aceite": "Lista priorizada de achados com impacto estimado e ação corretiva por item."
+    },
+    "audit-competitor": {
+      "descricao": "Analisar concorrência: anúncios, posicionamento, share of voice.",
+      "skills": [
+        "/ads-competitor",
+        "/competitive-intelligence",
+        "/competitor-profiling"
+      ],
+      "opcionais": [
+        "/competitor-alternatives",
+        "/competitive-brief",
+        "/market-research-briefing"
+      ],
+      "categorias": ["01-marketing-ads", "03-sales-crm"],
+      "aceite": "Perfil de cada concorrente com oferta, canal, mensagem e brecha explorável."
+    },
+    "site-seo": {
+      "descricao": "SEO técnico, conteúdo orgânico, schema, arquitetura de site, GEO/AI-search.",
+      "skills": [
+        "/seo-audit",
+        "/seo-technical",
+        "/seo-plan",
+        "/site-architecture"
+      ],
+      "opcionais": [
+        "/seo-content",
+        "/seo-schema",
+        "/seo-sitemap",
+        "/seo-hreflang",
+        "/seo-images",
+        "/seo-page",
+        "/seo-geo",
+        "/ai-seo",
+        "/programmatic-seo",
+        "/aso"
+      ],
+      "categorias": ["02-seo"],
+      "aceite": "Auditoria com erros por severidade + plano de correção com estimativa de impacto orgânico."
+    },
+    "sales-pipeline": {
+      "descricao": "Pipeline, forecast, prospecção, qualificação de lead, higiene de CRM.",
+      "skills": [
+        "/pipeline-review",
+        "/forecast",
+        "/revops"
+      ],
+      "opcionais": [
+        "/prospecting",
+        "/lead-data-validator",
+        "/draft-outreach",
+        "/account-research",
+        "/crm-integration-sync"
+      ],
+      "categorias": ["03-sales-crm"],
+      "aceite": "Pipeline por estágio com forecast justificado e ações de desbloqueio por deal."
+    },
+    "content": {
+      "descricao": "Produção de conteúdo: copy, blog, social, e-mail, carrossel, vídeo.",
+      "skills": [
+        "/content-strategy",
+        "/copywriting",
+        "/social-content"
+      ],
+      "opcionais": [
+        "/carousel-writer",
+        "/email-sequence",
+        "/create-viral-content",
+        "/ads-video-scripts",
+        "/copy-editing",
+        "/copy-format-check",
+        "/lead-magnets"
+      ],
+      "categorias": ["01-marketing-ads", "10-conteudo-escrita"],
+      "aceite": "Peças escritas no tom da marca, com CTA e canal de distribuição definidos."
+    }
+  }
+}

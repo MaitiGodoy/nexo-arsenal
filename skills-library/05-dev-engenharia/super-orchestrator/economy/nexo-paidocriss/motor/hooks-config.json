@@ -1,0 +1,63 @@
+{
+  "version": "2.0",
+  "enforcement": "MANDATORY",
+  "hooks": [
+    {
+      "id": "pre-prompt-narration",
+      "trigger": "PrePromptGeneration",
+      "name": "Remove Narration (P3 Enforcement)",
+      "description": "Strip 'I'll', 'Let me', 'I'm going to', 'Analyzing', 'Reading' prefixes. Output to ledger only.",
+      "patterns": ["^(I'll|Let me|I'm going to|Analyzing|Reading|Getting|Fetching|Running|Executing) "],
+      "action": "remove_prefix",
+      "ledger_only": true,
+      "reason": "P3 — Output cirúrgico: silêncio = ok. Narração = tokens desperdiçados."
+    },
+    {
+      "id": "post-tool-checkpoint",
+      "trigger": "PostToolUse",
+      "name": "Silent Checkpoint (Ledger Only)",
+      "description": "After each tool: write event to LEDGER, not stdout. Report only GAPs (errors).",
+      "action": "ledger_checkpoint",
+      "output": "silent_unless_error",
+      "error_pattern": "^(Error|FAIL|exit [^0]|timeout)",
+      "reason": "P1 — Higiene Input: sem ruído de progresso. Banda = contexto útil."
+    },
+    {
+      "id": "stop-terse-report",
+      "trigger": "Stop",
+      "name": "Final Report ≤10 Lines",
+      "description": "Consolidate: gastos vs economizado + ledger summary. No explanations.",
+      "max_lines": 10,
+      "format": "ultra-terse",
+      "sections": [
+        "ledger_summary",
+        "token_economy",
+        "gaps_if_any"
+      ],
+      "reason": "P3 — Output cirúrgico: relatório, não narração."
+    }
+  ],
+  "msg_economy": {
+    "enabled": true,
+    "checklist": [
+      "ultra_terse_le_50_chars",
+      "batch_tools_not_1x1",
+      "input_file_not_inline",
+      "subagent_could_do_this",
+      "silence_better_than_output",
+      "ledger_only_sufficient",
+      "one_liners_exit_0"
+    ],
+    "auto_apply": true,
+    "reason": "P3 — Protocolo 7-técnicas de economia de msg (P3: Output cirúrgico)."
+  },
+  "validation": {
+    "lint_v2_rules": ["R1-R18", "R19-R22"],
+    "gauntlet_critics": [
+      "narration_detector",
+      "msg_economy_checker",
+      "ledger_audit"
+    ],
+    "exit_on_fail": true
+  }
+}

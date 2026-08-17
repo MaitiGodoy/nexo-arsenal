@@ -1,0 +1,13 @@
+{
+  "_descricao": "Registro de origem, hash e data da cópia física de paidocriss dentro de super-orchestrator/economy/. Mesmo padrão do tardis/skills/PROVENIENCIA.json: hash impede drift silencioso; paidocriss (~/.claude/skills/paidocriss/) é a fonte, esta é derivada.",
+  "gerado_em": "2026-08-10",
+  "skills": {
+    "paidocriss": {
+      "origem": "~/.claude/skills/paidocriss",
+      "destino": "super-orchestrator/economy/paidocriss",
+      "arquivos": ["SKILL.md", "harness-detect.md", "MANIFEST.md"],
+      "sha256_SKILL.md": "a4dc9d35a8a223e29ea03c253744844a557f7636decf219552797d6d6f5d8a20",
+      "copiado_em": "2026-08-10"
+    }
+  }
+}

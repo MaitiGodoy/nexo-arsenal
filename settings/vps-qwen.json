@@ -1,0 +1,269 @@
+{
+  "security": {
+    "auth": {
+      "selectedType": "openai"
+    }
+  },
+  "model": {
+    "name": "deepseek-v4-flash",
+    "baseUrl": "https://api.deepseek.com"
+  },
+  "$version": 4,
+  "permissions": {
+    "allow": [
+      "Bash(redis-cli *)",
+      "Monitor(do *)",
+      "Monitor(sleep *)",
+      "Monitor(done)",
+      "Bash(git *)",
+      "Bash(printf *)",
+      "Bash(do *)",
+      "Bash(done)",
+      "Bash(echo *)",
+      "Bash(head *)"
+    ]
+  },
+  "ui": {
+    "autoModeAcknowledged": true,
+    "feedbackLastShownTimestamp": 1785916466014
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/root/.local/bin/rtk hook claude"
+          },
+          {
+            "type": "command",
+            "command": "/usr/bin/bash /root/.qwen/hooks/block-destructive-bash-global.sh"
+          },
+          {
+            "type": "command",
+            "command": "node \"/root/.qwen/setup-nexo/hooks/pre-commit-seguranca.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"/root/.qwen/setup-nexo/hooks/bloquear-comando-destrutivo.js\""
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.qwen/setup-nexo/hooks/bloquear-segredo-escrita.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"/root/.qwen/setup-nexo/hooks/bloquear-escrita-sem-catalogo.js\""
+          }
+        ]
+      },
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.qwen/setup-nexo/hooks/bloquear-fase-sem-plano.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"/root/.qwen/setup-nexo/hooks/avisar-economia-task.js\""
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/bash /root/.qwen/hooks/check-settings.sh",
+            "timeout": 10000
+          },
+          {
+            "type": "command",
+            "command": "node \"/root/.qwen/setup-nexo/hooks/sessao-inicia.js\""
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/bash /root/.qwen/hooks/nexo-paidocriss-reminder.sh"
+          }
+        ],
+        "matcher": ""
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/bash /root/.qwen/hooks/nexoflow-suggest.sh"
+          },
+          {
+            "type": "command",
+            "command": "node \"/root/.qwen/setup-nexo/hooks/prompt-submit-protocolo.js\""
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.qwen/setup-nexo/hooks/marcar-escrita.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"/root/.qwen/setup-nexo/hooks/sugerir-evolucao-nucleo.js\""
+          }
+        ]
+      },
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.qwen/setup-nexo/hooks/marcar-catalogo-lido.js\""
+          }
+        ]
+      },
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.qwen/setup-nexo/hooks/marcar-revisao-feita.js\""
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.qwen/setup-nexo/hooks/precompact-preservar.js\""
+          }
+        ],
+        "matcher": ""
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.qwen/setup-nexo/hooks/bloquear-fim-sem-memoria.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"/root/.qwen/setup-nexo/hooks/bloquear-fim-sem-revisao.js\""
+          }
+        ],
+        "matcher": ""
+      }
+    ]
+  },
+  "general": {
+    "language": "pt",
+    "outputLanguage": "Português"
+  },
+  "env": {
+    "DEEPSEEK_API_KEY": "sk-7c54eaee71a54c31850278f46647c370",
+    "Q9ROUTER_API_KEY": "sk-9router-cli-40614495479244e3a6637b92db2a9c7e",
+    "QWEN_CUSTOM_API_KEY_OPENAI_HTTPS_INTEGRATE_API_NVIDIA_COM_V1_D384067BF088": "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"
+  },
+  "modelProviders": {
+    "openai": [
+      {
+        "id": "deepseek-v4-pro",
+        "name": "[DeepSeek] deepseek-v4-pro",
+        "baseUrl": "https://api.deepseek.com",
+        "envKey": "DEEPSEEK_API_KEY",
+        "generationConfig": {
+          "extra_body": {
+            "enable_thinking": true
+          },
+          "contextWindowSize": 1000000
+        }
+      },
+      {
+        "id": "deepseek-v4-flash",
+        "name": "[DeepSeek] deepseek-v4-flash",
+        "baseUrl": "https://api.deepseek.com",
+        "envKey": "DEEPSEEK_API_KEY",
+        "generationConfig": {
+          "contextWindowSize": 1000000
+        }
+      },
+      {
+        "id": "nvidia/llama-3.1-nemotron-70b-instruct",
+        "name": "nvidia/llama-3.1-nemotron-70b-instruct",
+        "baseUrl": "https://integrate.api.nvidia.com/v1",
+        "envKey": "QWEN_CUSTOM_API_KEY_OPENAI_HTTPS_INTEGRATE_API_NVIDIA_COM_V1_D384067BF088"
+      },
+      {
+        "id": "meta/llama-3.1-405b-instruct",
+        "name": "meta/llama-3.1-405b-instruct",
+        "baseUrl": "https://integrate.api.nvidia.com/v1",
+        "envKey": "QWEN_CUSTOM_API_KEY_OPENAI_HTTPS_INTEGRATE_API_NVIDIA_COM_V1_D384067BF088"
+      },
+      {
+        "id": "qwen/qwen2.5-coder-32b-instruct",
+        "name": "qwen/qwen2.5-coder-32b-instruct",
+        "baseUrl": "https://integrate.api.nvidia.com/v1",
+        "envKey": "QWEN_CUSTOM_API_KEY_OPENAI_HTTPS_INTEGRATE_API_NVIDIA_COM_V1_D384067BF088"
+      },
+      {
+        "id": "deepseek-ai/deepseek-r1",
+        "name": "deepseek-ai/deepseek-r1",
+        "baseUrl": "https://integrate.api.nvidia.com/v1",
+        "envKey": "QWEN_CUSTOM_API_KEY_OPENAI_HTTPS_INTEGRATE_API_NVIDIA_COM_V1_D384067BF088"
+      },
+      {
+        "id": "ds/deepseek-v4-flash",
+        "name": "[9router] deepseek-v4-flash",
+        "baseUrl": "http://localhost:20128/v1",
+        "envKey": "Q9ROUTER_API_KEY",
+        "generationConfig": {
+          "contextWindowSize": 1000000
+        }
+      },
+      {
+        "id": "ds/deepseek-v4-pro",
+        "name": "[9router] deepseek-v4-pro",
+        "baseUrl": "http://localhost:20128/v1",
+        "envKey": "Q9ROUTER_API_KEY",
+        "generationConfig": {
+          "contextWindowSize": 1000000
+        }
+      },
+      {
+        "id": "nvidia/deepseek-ai/deepseek-v4-flash",
+        "name": "[9router] deepseek-v4-flash (nvidia)",
+        "baseUrl": "http://localhost:20128/v1",
+        "envKey": "Q9ROUTER_API_KEY",
+        "generationConfig": {
+          "contextWindowSize": 1000000
+        }
+      }
+    ]
+  },
+  "providerMetadata": {
+    "deepseek": {
+      "version": "0a0e507650110cbaf09ea65b92ba06ce8ff8c1a57b2d8dd8a61897fa1469aae3",
+      "baseUrl": "https://api.deepseek.com"
+    }
+  }
+}

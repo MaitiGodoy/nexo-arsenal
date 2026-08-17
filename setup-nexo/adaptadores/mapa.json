@@ -1,0 +1,85 @@
+{
+  "_descricao": "Mapa de ambientes suportados. Cada entrada diz onde o Setup Nexo escreve o espelho de comportamento e onde liga os hooks daquele ambiente. Adicionar um ambiente novo e adicionar uma entrada aqui, nunca precisa mexer no nucleo.",
+  "ambientes": [
+    {
+      "id": "claude-code",
+      "nomeExibicao": "Claude Code",
+      "espelho": "CLAUDE.md",
+      "raizConfig": ".claude",
+      "arquivoHooks": ".claude/settings.json",
+      "formatoHook": "claude-settings-json"
+    },
+    {
+      "id": "gemini-cli",
+      "nomeExibicao": "Gemini CLI",
+      "espelho": "GEMINI.md",
+      "raizConfig": ".gemini",
+      "arquivoHooks": ".gemini/settings.json",
+      "formatoHook": "generico-json"
+    },
+    {
+      "id": "qwen-code",
+      "nomeExibicao": "Qwen Code",
+      "espelho": "QWEN.md",
+      "raizConfig": ".qwen",
+      "arquivoHooks": ".qwen/settings.json",
+      "formatoHook": "generico-json"
+    },
+    {
+      "id": "opencode",
+      "nomeExibicao": "OpenCode",
+      "espelho": "AGENTS.md",
+      "raizConfig": ".opencode",
+      "arquivoHooks": ".opencode/settings.json",
+      "formatoHook": "generico-json"
+    },
+    {
+      "id": "hermes",
+      "nomeExibicao": "Hermes Agent",
+      "espelho": "AGENTS.md",
+      "raizConfig": ".hermes",
+      "arquivoHooks": ".hermes/config.yaml",
+      "formatoHook": "hermes-config-yaml"
+    },
+    {
+      "id": "grok-cli",
+      "nomeExibicao": "Grok CLI",
+      "espelho": "GROK.md",
+      "raizConfig": ".grok",
+      "arquivoHooks": ".grok/settings.json",
+      "formatoHook": "generico-json"
+    },
+    {
+      "id": "cursor",
+      "nomeExibicao": "Cursor",
+      "espelho": "CURSOR.md",
+      "raizConfig": ".cursor",
+      "arquivoHooks": null,
+      "formatoHook": "sem-hook-nativo"
+    },
+    {
+      "id": "copilot",
+      "nomeExibicao": "GitHub Copilot",
+      "espelho": "COPILOT.md",
+      "raizConfig": ".github",
+      "arquivoHooks": null,
+      "formatoHook": "sem-hook-nativo"
+    },
+    {
+      "id": "codex",
+      "nomeExibicao": "Codex CLI",
+      "espelho": "CODEX.md",
+      "raizConfig": ".codex",
+      "arquivoHooks": ".codex/settings.json",
+      "formatoHook": "generico-json"
+    },
+    {
+      "id": "generico",
+      "nomeExibicao": "Ambiente nao reconhecido",
+      "espelho": "AGENTS.md",
+      "raizConfig": ".nexo-adaptador",
+      "arquivoHooks": null,
+      "formatoHook": "sem-hook-nativo"
+    }
+  ]
+}

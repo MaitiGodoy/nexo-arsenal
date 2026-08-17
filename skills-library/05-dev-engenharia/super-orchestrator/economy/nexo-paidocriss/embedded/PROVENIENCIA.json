@@ -1,0 +1,108 @@
+{
+ "metadata": {
+  "skill": "paidocriss",
+  "version": "1.0",
+  "date_generated": "2026-08-15",
+  "source_tool": "Nexo-SkillCreator v2"
+ },
+ "entries": [
+  {
+   "name": "doutrina",
+   "path": "embedded/doutrina/SKILL.md",
+   "origin": "reescrita de paidocriss/embedded/doutrina/, reduzida",
+   "origin_date": "2026-08-15",
+   "content_lines": 0,
+   "description": "Doutrina operacional (orquestração cumulativa, gatilho vs permissão)"
+  },
+  {
+   "name": "higiene-input",
+   "path": "embedded/higiene-input/SKILL.md",
+   "origin": "funde token-economy + claude-code-token-stack + cli-script",
+   "origin_date": "2026-08-15",
+   "content_lines": 0,
+   "description": "Higiene de entrada: RTK, .claudeignore, env, settings"
+  },
+  {
+   "name": "llm-free-first",
+   "path": "embedded/llm-free-first/SKILL.md",
+   "origin": "paidocriss/embedded/llm-free-first/ EXPANDIDO",
+   "origin_date": "2026-08-15",
+   "content_lines": 0,
+   "description": "Checklist delegação: o que não precisa de LLM"
+  },
+  {
+   "name": "isolamento-carga",
+   "path": "embedded/isolamento-carga/SKILL.md",
+   "origin": "novo",
+   "origin_date": "2026-08-15",
+   "content_lines": 0,
+   "description": "P2 subagentes Haiku (explore, verifier, diff-reviewer, security-reviewer)"
+  },
+  {
+   "name": "output-cirurgico",
+   "path": "embedded/output-cirurgico/SKILL.md",
+   "origin": "novo",
+   "origin_date": "2026-08-15",
+   "content_lines": 0,
+   "description": "P3 ultra-terse, TDAH, silêncio = OK"
+  },
+  {
+   "name": "savings-report",
+   "path": "embedded/savings-report/SKILL.md",
+   "origin": "paidocriss/embedded/token-savings-report/",
+   "origin_date": "2026-08-15",
+   "content_lines": 0,
+   "description": "Relatório gastos vs economizado"
+  },
+  {
+   "name": "spec-driven",
+   "path": "embedded/spec-driven/SKILL.md",
+   "origin": "novo",
+   "origin_date": "2026-08-15",
+   "content_lines": 0,
+   "description": "Modo Arquiteto spec.md denso, zero código"
+  },
+  {
+   "name": "monitor",
+   "path": "embedded/monitor/",
+   "origin": "paidocriss/embedded/session-token-monitor/ (rebaixado)",
+   "origin_date": "2026-08-15",
+   "content_lines": 0,
+   "description": "Monitorização ±30%, nunca decisória"
+  },
+  {
+   "name": "msg-economy",
+   "path": "embedded/msg-economy/SKILL.md",
+   "origin": "novo",
+   "origin_date": "2026-08-15",
+   "content_lines": 61,
+   "description": "P3 checklist 7 técnicas economizar msgs"
+  }
+ ],
+ "lint_status": "not_run",
+ "claude-code-token-stack": {
+  "origem": "~/.claude/skills-library/11-token-economy-meta/claude-code-token-stack/SKILL.md",
+  "sha256": "1df8c0cbf478b019bc461a0d0cc7aa973b5f8d305e446760cd3aceb19a87b2a5",
+  "data": "2026-08-15"
+ },
+ "memory-management": {
+  "origem": "~/.claude/skills-library/11-token-economy-meta/memory-management/SKILL.md",
+  "sha256": "97ea62b50de635e2b0c65abd7cb33ad89ef3b5a12a54da4784f01a0603a5d440",
+  "data": "2026-08-15"
+ },
+ "model-switch-strategy": {
+  "origem": "~/.claude/skills-library/11-token-economy-meta/model-switch-strategy/SKILL.md",
+  "sha256": "fee8da98ad7f1e1cdc087c31fd7a33a8cd587525865cf41ec192463825e303a5",
+  "data": "2026-08-15"
+ },
+ "session-token-monitor": {
+  "origem": "~/.claude/skills-library/11-token-economy-meta/session-token-monitor/SKILL.md",
+  "sha256": "af812e15cb4ae92d7f275b3fb43c5365ec2329e30c6a911e477c41d36b06f1b2",
+  "data": "2026-08-15"
+ },
+ "token-economy": {
+  "origem": "~/.claude/skills-library/11-token-economy-meta/token-economy/SKILL.md",
+  "sha256": "857a646eb8cd7e21c0aa83d6dde7fc71541e57677d26c985d4301bb89652b7e2",
+  "data": "2026-08-15"
+ }
+}

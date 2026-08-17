@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"],
+      "_instrucao": "Sem credencial — roda um browser local. Conectar só quando a tarefa exigir navegação/scraping real (ex.: preencher formulário, ler página dinâmica, testar fluxo web); desconectar ao terminar o domínio."
+    }
+  }
+}

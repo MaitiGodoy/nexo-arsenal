@@ -1,0 +1,116 @@
+{
+  "nome": "Setup Nexo",
+  "versao": "1.0.0",
+  "idioma": "pt-BR",
+
+  "travas": {
+    "refino_max_iteracoes": 3,
+    "refino_max_tokens": 4000,
+    "fase_max_repeticoes": 3,
+    "ciclo_max_iteracoes": 12,
+    "compressao_limite_tokens": 100000,
+    "compressao_alvo_tokens": 35000
+  },
+
+  "modelos": {
+    "planejador": { "provider": "anthropic", "modelo": "opus",  "papel": "planeja e decide" },
+    "executor":   { "provider": "deepseek",  "modelo": "flash", "papel": "escreve o codigo da fase" },
+    "revisor":    { "provider": "anthropic", "modelo": "opus",  "papel": "audita a fase" },
+    "auxiliar":   { "provider": "anthropic", "modelo": "haiku", "papel": "varredura, verificacao, licoes" }
+  },
+
+  "backends": {
+    "anthropic": { "tipo": "nativo", "base_url": null },
+    "deepseek":  { "tipo": "proxy",  "base_url": "http://127.0.0.1:3200", "rota_troca": "/switch" },
+    "openai":    { "tipo": "proxy",  "base_url": null, "rota_troca": "/switch" },
+    "local":     { "tipo": "proxy",  "base_url": "http://127.0.0.1:11434", "rota_troca": null }
+  },
+
+  "memoria": {
+    "diretorio": ".nexo",
+    "arquivos": {
+      "licoes": "LICOES.md",
+      "plano": "PLANO.md",
+      "memoria": "MEMORIA.md",
+      "evolucao": "EVOLUCAO.md",
+      "decisoes": "DECISOES.md",
+      "progresso": "PROGRESSO.md"
+    },
+    "realimentacao_obrigatoria": true
+  },
+
+  "espelhos": [
+    "CLAUDE.md",
+    "AGENTS.md",
+    "GEMINI.md",
+    "QWEN.md",
+    "OPENCODE.md",
+    "GROK.md",
+    "CURSOR.md",
+    "COPILOT.md",
+    "CODEX.md"
+  ],
+
+  "integridade": {
+    "bloqueia_escrita": true,
+    "proibido_texto": [
+      "TODO",
+      "FIXME",
+      "implementar depois",
+      "nao implementado",
+      "not implemented",
+      "your code here",
+      "exemplo ficticio",
+      "dados simulados",
+      "mock data",
+      "coming soon",
+      "por enquanto retorna"
+    ],
+    "proibido_regex": [
+      "pass\\s*#\\s*(todo|implementar|stub)",
+      "throw new Error\\(['\"]not implemented",
+      "return (null|None);?\\s*(//|#)\\s*(todo|stub)",
+      "def \\w+\\([^)]*\\):\\s*\\n\\s*pass\\s*$",
+      "function \\w+\\s*\\([^)]*\\)\\s*\\{\\s*\\}"
+    ]
+  },
+
+  "escala": {
+    "nivel_padrao": "1-usuario-pronto-para-milhares",
+    "exigencias": [
+      "sem estado global mutavel entre requisicoes",
+      "I/O com timeout e retry explicitos",
+      "consulta com indice e paginacao, nunca varredura total",
+      "trabalho pesado em fila, nunca no caminho da resposta",
+      "configuracao por ambiente, nunca hardcode",
+      "custo por operacao declarado no plano"
+    ]
+  },
+
+  "seguranca": {
+    "portao_segredo_diff": true,
+    "portao_segredo_historico": true,
+    "portao_revisao_seguranca": true,
+    "padroes": [
+      "sk-[A-Za-z0-9]{20,}",
+      "ghp_[A-Za-z0-9]{30,}",
+      "AKIA[0-9A-Z]{16}",
+      "-----BEGIN [A-Z ]*PRIVATE KEY-----",
+      "(?i)(api[_-]?key|secret|senha|password|token)\\s*[:=]\\s*['\"](?![^'\"]*(?:teste|mock|exemplo|valida|example|ficticio))[^'\"]{12,}"
+    ],
+    "comandos_destrutivos": [
+      "rm\\s+-rf\\s+/(\\s|$)",
+      "git\\s+push\\s+.*--force",
+      "git\\s+reset\\s+--hard",
+      "DROP\\s+TABLE",
+      "TRUNCATE(\\s+TABLE)?"
+    ]
+  },
+
+  "token": {
+    "rtk_ativo": true,
+    "llm_free_primeiro": true,
+    "catalogo_sob_demanda": true,
+    "delegar_varredura_ao_auxiliar": true
+  }
+}

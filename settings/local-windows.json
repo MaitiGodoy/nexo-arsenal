@@ -1,0 +1,125 @@
+{
+  "env": {
+    "ENABLE_STOP_REVIEW": "1",
+    "ENABLE_COMMIT_REVIEW": "1",
+    "CLAUDE_API_BASE": "http://localhost:8080/v1",
+    "CLAUDE_API_KEY": "nexo-gateway-master-2024",
+    "LLM_API_BASE": "http://localhost:8080/v1",
+    "LLM_API_KEY": "nexo-gateway-master-2024"
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/block-destructive-bash-global.sh"
+          },
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          },
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_CONFIG_DIR/setup-nexo/hooks/bloquear-comando-destrutivo.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_CONFIG_DIR/setup-nexo/hooks/pre-commit-seguranca.js\""
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_CONFIG_DIR/hooks/block-secrets.sh"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/nexo-paidocriss-reminder.sh"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_CONFIG_DIR/hooks/check-settings.sh"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/skills/nexo-passa-bastao/motor/passa-bastao.sh auto"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_CONFIG_DIR/skills/nexo-paidocriss/motor/hooks/ledger-checkpoint.sh\""
+          }
+        ],
+        "matcher": "*"
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_CONFIG_DIR/skills/nexo-paidocriss/motor/hooks/final-report.sh\""
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "ecc@ecc": true,
+    "open-design@open-design": true,
+    "security-guidance@claude-plugins-official": true,
+    "hookify@claude-plugins-official": true,
+    "plugin-dev@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "ralph-wiggum@claude-code-plugins": true,
+    "hostinger@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "ecc": {
+      "source": {
+        "source": "github",
+        "repo": "affaan-m/ECC"
+      }
+    },
+    "open-design": {
+      "source": {
+        "source": "github",
+        "repo": "nexu-io/open-design"
+      }
+    },
+    "claude-code-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-code"
+      }
+    }
+  },
+  "theme": "dark"
+}

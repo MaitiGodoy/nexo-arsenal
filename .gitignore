@@ -1,0 +1,17 @@
+.paidocriss/
+backups/
+lixo/
+*.bak-*
+*.pre-fase*
+*.tar.gz
+history.jsonl
+shell-snapshots/
+sessions/
+projects/
+telemetry/
+cache/
+node_modules/
+__pycache__/
+installed_plugins.json
+known_marketplaces.json
+.claude.json

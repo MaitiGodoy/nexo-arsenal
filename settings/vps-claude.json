@@ -1,0 +1,195 @@
+{
+  "env": {
+    "DEEPSEEK_API_KEY": "sk-130edc845b874f63948d2c39741d696e",
+    "ENABLE_STOP_REVIEW": "0",
+    "ENABLE_COMMIT_REVIEW": "0"
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/root/.local/bin/rtk hook claude"
+          },
+          {
+            "type": "command",
+            "command": "/usr/bin/bash /root/.claude/hooks/block-destructive-bash-global.sh"
+          },
+          {
+            "type": "command",
+            "command": "node \"/root/.claude/setup-nexo/hooks/pre-commit-seguranca.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"/root/.claude/setup-nexo/hooks/bloquear-comando-destrutivo.js\""
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.claude/setup-nexo/hooks/bloquear-segredo-escrita.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"/root/.claude/setup-nexo/hooks/bloquear-escrita-sem-catalogo.js\""
+          }
+        ]
+      },
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.claude/setup-nexo/hooks/bloquear-fase-sem-plano.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"/root/.claude/setup-nexo/hooks/avisar-economia-task.js\""
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/bash /root/.claude/hooks/check-settings.sh",
+            "timeout": 10000
+          },
+          {
+            "type": "command",
+            "command": "node \"/root/.claude/setup-nexo/hooks/sessao-inicia.js\""
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/bash /root/.claude/hooks/nexo-paidocriss-reminder.sh"
+          }
+        ],
+        "matcher": ""
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/bash /root/.claude/hooks/nexoflow-suggest.sh"
+          },
+          {
+            "type": "command",
+            "command": "node \"/root/.claude/setup-nexo/hooks/prompt-submit-protocolo.js\""
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.claude/setup-nexo/hooks/auto-conectar-mcp.js\""
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.claude/setup-nexo/hooks/marcar-escrita.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"/root/.claude/setup-nexo/hooks/sugerir-evolucao-nucleo.js\""
+          }
+        ]
+      },
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.claude/setup-nexo/hooks/marcar-catalogo-lido.js\""
+          }
+        ]
+      },
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.claude/setup-nexo/hooks/marcar-revisao-feita.js\""
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.claude/setup-nexo/hooks/precompact-preservar.js\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.claude/setup-nexo/hooks/bloquear-fim-sem-memoria.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"/root/.claude/setup-nexo/hooks/bloquear-fim-sem-revisao.js\""
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "ralph-wiggum@claude-code-plugins": true,
+    "ecc@ecc": true,
+    "open-design@open-design": true,
+    "security-guidance@claude-plugins-official": true,
+    "hookify@claude-plugins-official": true,
+    "plugin-dev@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "nexo": {
+      "source": {
+        "source": "directory",
+        "path": "/root/nexo_stack"
+      }
+    },
+    "claude-code-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-code"
+      }
+    },
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
+    }
+  },
+  "alwaysThinkingEnabled": false,
+  "model": "sonnet"
+}

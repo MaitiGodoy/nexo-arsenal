@@ -1,0 +1,68 @@
+{
+  "_descricao": "Mapa dos 7 comandos portados como fases nomeadas e invocaveis do Nexoflow (nucleo/03-nexoflow.md). O planejador insere uma fase nomeada no PLANO.md quando o gatilho casa com o pedido, no formato Objetivo/Arquivos/Modelo/Seguranca/Aceite ja definido em 03-nexoflow.md — este mapa so resolve QUAL papel/agente executa e QUANDO oferecer a fase, nunca substitui o formato do plano.",
+  "fases": [
+    {
+      "id": "build-fix",
+      "nomeFase": "corrigir-build",
+      "papel": "executor",
+      "agente": "build-error-resolver",
+      "gatilho": "build ou typecheck falhando",
+      "objetivo": "Detectar o sistema de build do projeto e corrigir erros incrementalmente, com o menor diff possivel",
+      "aceite": "comando de build do projeto sai limpo (exit 0)"
+    },
+    {
+      "id": "checkpoint",
+      "nomeFase": "checkpoint",
+      "papel": "auxiliar",
+      "agente": "verifier",
+      "gatilho": "fim de uma fase do Nexoflow, antes de avancar para a proxima",
+      "objetivo": "Criar, verificar ou listar um checkpoint apos rodar as checagens de verificacao da fase",
+      "aceite": "checkpoint gravado e checagens da fase relatadas como PASS/FAIL"
+    },
+    {
+      "id": "code-review",
+      "nomeFase": "revisar-codigo",
+      "papel": "revisor",
+      "agente": "code-reviewer",
+      "gatilho": "fase marcada Seguranca:nao mas com mudanca de codigo, ou pedido explicito de revisao (local ou PR)",
+      "objetivo": "Revisar mudancas nao commitadas locais ou um PR do GitHub (numero/URL em $ARGUMENTS)",
+      "aceite": "lista de achados priorizada (ou vazia) devolvida ao papel revisor do ciclo"
+    },
+    {
+      "id": "cost-report",
+      "nomeFase": "relatorio-de-custo",
+      "papel": "auxiliar",
+      "agente": "verifier",
+      "gatilho": "usuario pergunta quanto gastou, ou fim de uma sessao longa do Nexoflow",
+      "objetivo": "Gerar relatorio local de gasto por dia/modelo/sessao a partir do log de metricas do host, nunca estimar sem a fonte real",
+      "aceite": "relatorio gerado a partir do log real (nunca heuristica) ou aviso explicito de que o log nao existe"
+    },
+    {
+      "id": "evolve",
+      "nomeFase": "evoluir-nucleo",
+      "papel": "planejador",
+      "agente": "architect",
+      "gatilho": "licao recorrente em .nexo/LICOES.md (mesma causa, 2a vez) — ver nucleo/06-memoria.md auto-evolucao",
+      "objetivo": "Analisar o padrao repetido e propor diff pequeno e especifico de edicao no nucleo, nunca reescrita ampla",
+      "aceite": "proposta de diff apresentada ao usuario, aplicada so apos aprovacao explicita"
+    },
+    {
+      "id": "fastapi-review",
+      "nomeFase": "revisar-fastapi",
+      "papel": "revisor",
+      "agente": "fastapi-reviewer",
+      "gatilho": "fase mexeu em app FastAPI (rota, dependency, schema Pydantic)",
+      "objetivo": "Revisar arquitetura async, injecao de dependencia, schemas Pydantic, seguranca e qualidade do OpenAPI",
+      "aceite": "lista de achados priorizada (ou vazia) devolvida ao papel revisor do ciclo"
+    },
+    {
+      "id": "harness-audit",
+      "nomeFase": "auditar-harness",
+      "papel": "auxiliar",
+      "agente": "explore",
+      "gatilho": "inicio de trabalho num repo novo, ou pedido explicito de auditoria de harness",
+      "objetivo": "Rodar auditoria deterministica do repositorio e devolver scorecard priorizado",
+      "aceite": "scorecard emitido em texto ou json conforme --format"
+    }
+  ]
+}

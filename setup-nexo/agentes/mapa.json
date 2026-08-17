@@ -1,0 +1,35 @@
+{
+  "_descricao": "Mapa dos 20 agentes portados para os 4 papeis do Nexoflow (nucleo/03-nexoflow.md). Cada agente mantem seu proprio frontmatter (model/tools) porque foi validado nesse tier; o campo 'papel' aqui e o que o planejador do Nexoflow usa para decidir QUANDO chamar cada um dentro do ciclo de fase. Adicionar um agente novo e adicionar uma entrada aqui, nunca inferir na hora.",
+  "_origem": "15 dos 20 agentes existem 1:1 no plugin ECC global (affaan-m/ecc, ~/.claude/plugins/marketplaces/ecc/agents/ — architect, planner, build-error-resolver, doc-updater, e2e-runner, performance-optimizer, refactor-cleaner, tdd-guide, code-reviewer, database-reviewer, fastapi-reviewer, python-reviewer, react-reviewer, typescript-reviewer, security-reviewer). Os 5 restantes sao proprios do Nexo (jobs-strategist, diff-reviewer, explore, prospector-qualifier, verifier). Verificado por execucao em 2026-08-03 (cruzamento do mapa contra o diretorio real do ECC).",
+  "papeis": {
+    "planejador": "Investiga, decide as fases, escreve PLANO.md. Raciocinio caro.",
+    "executor": "Implementa/corrige codigo real de uma fase. Modelo padrao (nunca Haiku).",
+    "revisor": "Audita a fase entregue (ou um dominio especifico dela), aprova ou devolve.",
+    "auxiliar": "Varredura, verificacao pontual, checagem de aceite. Modelo barato."
+  },
+  "agentes": [
+    { "id": "architect", "papel": "planejador", "motivo": "decisao de arquitetura/trade-off, nunca escreve codigo de producao" },
+    { "id": "planner", "papel": "planejador", "motivo": "monta PLANO.md por fases atomicas, e o papel planejador do Nexoflow" },
+    { "id": "jobs-strategist", "papel": "planejador", "motivo": "framework de decisao estrategica, mesmo nivel de raciocinio do planejador" },
+
+    { "id": "build-error-resolver", "papel": "executor", "motivo": "corrige erro de build/tipo com diff minimo, escreve codigo real" },
+    { "id": "doc-updater", "papel": "executor", "motivo": "gera/atualiza documentacao e codemaps, escreve arquivo real" },
+    { "id": "e2e-runner", "papel": "executor", "motivo": "gera e mantem testes E2E, escreve codigo de teste real" },
+    { "id": "performance-optimizer", "papel": "executor", "motivo": "aplica otimizacao real no codigo, nao so aponta" },
+    { "id": "refactor-cleaner", "papel": "executor", "motivo": "remove codigo morto e aplica refactor real" },
+    { "id": "tdd-guide", "papel": "executor", "motivo": "escreve teste (RED) e implementacao (GREEN) de verdade" },
+
+    { "id": "code-reviewer", "papel": "revisor", "motivo": "audita qualidade/seguranca/manutenibilidade do diff da fase" },
+    { "id": "database-reviewer", "papel": "revisor", "motivo": "audita schema/query/migration antes de aprovar a fase" },
+    { "id": "fastapi-reviewer", "papel": "revisor", "motivo": "audita fase que mexeu em app FastAPI antes de aprovar" },
+    { "id": "python-reviewer", "papel": "revisor", "motivo": "audita fase Python antes de aprovar" },
+    { "id": "react-reviewer", "papel": "revisor", "motivo": "audita fase React/JSX antes de aprovar" },
+    { "id": "typescript-reviewer", "papel": "revisor", "motivo": "audita fase TS/JS antes de aprovar" },
+
+    { "id": "diff-reviewer", "papel": "auxiliar", "motivo": "lista curta de bugs/riscos do diff, barato, roda entre fases" },
+    { "id": "explore", "papel": "auxiliar", "motivo": "varredura ampla de arquivos, devolve so resumo file:line" },
+    { "id": "prospector-qualifier", "papel": "auxiliar", "motivo": "checagem de invariante de dado, deterministica e barata" },
+    { "id": "security-reviewer", "papel": "auxiliar", "motivo": "portao 3 de 07-seguranca.md diz explicitamente 'agente auxiliar audita o diff'" },
+    { "id": "verifier", "papel": "auxiliar", "motivo": "roda o comando de aceite da fase, devolve so PASS/FAIL" }
+  ]
+}

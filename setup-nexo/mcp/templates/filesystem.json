@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "${NEXO_PROJETO_RAIZ}"],
+      "_instrucao": "Defina NEXO_PROJETO_RAIZ apontando para a pasta que o servidor pode acessar."
+    }
+  }
+}

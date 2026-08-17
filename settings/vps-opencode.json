@@ -1,0 +1,135 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.opencode/setup-nexo/hooks/sessao-inicia.js\""
+          }
+        ],
+        "matcher": ""
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/bash /root/.opencode/hooks/economy-router-reminder.sh"
+          }
+        ],
+        "matcher": ""
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.opencode/setup-nexo/hooks/prompt-submit-protocolo.js\""
+          }
+        ],
+        "matcher": ""
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.opencode/setup-nexo/hooks/pre-commit-seguranca.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"/root/.opencode/setup-nexo/hooks/bloquear-comando-destrutivo.js\""
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.opencode/setup-nexo/hooks/bloquear-segredo-escrita.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"/root/.opencode/setup-nexo/hooks/bloquear-escrita-sem-catalogo.js\""
+          }
+        ]
+      },
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.opencode/setup-nexo/hooks/bloquear-fase-sem-plano.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"/root/.opencode/setup-nexo/hooks/avisar-economia-task.js\""
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.opencode/setup-nexo/hooks/marcar-escrita.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"/root/.opencode/setup-nexo/hooks/sugerir-evolucao-nucleo.js\""
+          }
+        ]
+      },
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.opencode/setup-nexo/hooks/marcar-catalogo-lido.js\""
+          }
+        ]
+      },
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.opencode/setup-nexo/hooks/marcar-revisao-feita.js\""
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.opencode/setup-nexo/hooks/precompact-preservar.js\""
+          }
+        ],
+        "matcher": ""
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/root/.opencode/setup-nexo/hooks/bloquear-fim-sem-memoria.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"/root/.opencode/setup-nexo/hooks/bloquear-fim-sem-revisao.js\""
+          }
+        ],
+        "matcher": ""
+      }
+    ]
+  }
+}
